@@ -26,6 +26,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd /home/ubuntu/app
+            echo CONECTED! - Updating...
             sudo docker rm --force ezops
             git pull origin master
             sudo docker build --tag ezops .
