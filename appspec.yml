@@ -14,8 +14,8 @@ hooks:
   BeforeInstall:
     - location: /scripts/install.sh
       timeout: 300
-      runas: root
+      runas: ezops
   AfterInstall:
     - location: /scripts/post_install.sh
       timeout: 600
-      runas: ec2-user
+      runas: ezops
