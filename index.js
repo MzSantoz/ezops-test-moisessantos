@@ -84,7 +84,7 @@ const { connection } = mongoose;
 connection.once('open', () => {
   connectedToMongoDB = true;
   console.log('Conectado ao MongoDB');
-  const port = process.env.PORT || 8080;
+  const port = process.env.PORT || 3000;
 
   http.listen(port, () => {
     console.log(`server is running on port => ${port}`);
