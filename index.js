@@ -6,7 +6,7 @@ const io = require('socket.io')(http);
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-app.use(express.static(__dirname));
+app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -23,9 +23,10 @@ app.get('/messages', (_, res) => {
 
 
 app.get('/messages/:user', (req, res) => {
-  const user = req.params.user;
+  const user = req.body;
   Message.find({name: user},(err, messages)=> {
-    res.send(messages);
+    io.emit('message-found', messages);
+    res.sendStatus(200);
   })
 });
 
@@ -84,7 +85,7 @@ const { connection } = mongoose;
 connection.once('open', () => {
   connectedToMongoDB = true;
   console.log('Conectado ao MongoDB');
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 8080;
 
   http.listen(port, () => {
     console.log(`server is running on port => ${port}`);
