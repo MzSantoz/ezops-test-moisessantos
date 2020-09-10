@@ -5,7 +5,8 @@ name: CD Docker Node-js App to AWS
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
-  relase:
+  push:
+    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,13 +21,12 @@ jobs:
       - uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
+          username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd /app
-            echo CONECTED! - Updating...
-            docker rm --force ezops
+            sudo docker rm --force ezops
             git pull origin master
-            docker build --tag ezops .
-            docker run --publish 8080:8080 --detach --name ezops ezops
+            sudo docker build --tag ezops .
+            sudo docker run --publish 8080:8080 --detach --name ezops ezops
