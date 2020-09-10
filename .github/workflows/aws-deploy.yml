@@ -25,4 +25,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            ls -la
+            cd /app
+            echo CONECTED! - Updating...
+            docker rm --force ezops
+            git pull origin master
+            docker build --tag ezops .
+            docker run --publish 8080:8080 --detach --name ezops ezops
