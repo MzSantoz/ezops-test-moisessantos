@@ -3,3 +3,19 @@ os: linux
 files:
   - source: /
     destination: /home/ezops/app
+permissions:
+  - object: /home/ezops
+    owner: ezops
+    group: ezops
+    type:
+      - directory
+      - file
+hooks:
+  BeforeInstall:
+    - location: /scripts/install.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: /scripts/post_install.sh
+      timeout: 600
+      runas: ec2-user
