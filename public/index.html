@@ -101,18 +101,18 @@
     }
 
     function getMessages() {
-      $.get('http://localhost:8080/messages', (data) => {
+      $.get('http://3.134.81.19:8080/messages', (data) => {
         data.forEach(addMessages);
       })
     }
 
     function sendMessage(message) {
-      $.post('http://localhost:8080/messages', message)
+      $.post('http://3.134.81.19:8080/messages', message)
     }
 
     function SearchMessagesByUser(user) {
       $("#users").empty();
-      $.get(`http://localhost:8080/messages/${user}`, (data) => {
+      $.get(`http://3.134.81.19:8080/messages/${user}`, (data) => {
         data.forEach(filteredMessages);
       });
     }
