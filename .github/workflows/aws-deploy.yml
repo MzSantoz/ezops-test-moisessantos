@@ -27,7 +27,7 @@ jobs:
           script: |
             cd /app
             echo CONECTED! - Updating...
-            sudo docker rm --force ezops
+            docker rm --force ezops
             git pull origin master
-            sudo docker build --tag ezops .
-            sudo docker run --publish 8080:8080 --detach --name ezops ezops
+            docker build --tag ezops .
+            docker run --publish 8080:8080 --detach --name ezops ezops
