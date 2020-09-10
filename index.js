@@ -25,7 +25,7 @@ app.get('/messages', (_, res) => {
 
 
 app.get('/messages/:user', (req, res) => {
-  const user = req.body;
+  const user = req.params.user;
   Message.find({name: user},(err, messages)=> {
     io.emit('message-found', messages);
     res.sendStatus(200);
