@@ -105,11 +105,11 @@
         data.forEach(addMessages);
       })
     }
-
+    
     function sendMessage(message) {
       $.post('http://ec2-3-134-81-19.us-east-2.compute.amazonaws.com:8080/messages', message)
     }
-
+    
     function SearchMessagesByUser(user) {
       $("#users").empty();
       $.get(`http://ec2-3-134-81-19.us-east-2.compute.amazonaws.com:8080/messages/${user}`, (data) => {
