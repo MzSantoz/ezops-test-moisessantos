@@ -100,18 +100,18 @@
     }
 
     function getMessages() {
-      $.get('http://ec2-3-134-81-19.us-east-2.compute.amazonaws.com:8080/messages', (data) => {
+      $.get('http://ezops-env.eba-p7xu9czn.us-east-2.elasticbeanstalk.com/messages', (data) => {
         data.forEach(addMessages);
       })
     }
     
     function sendMessage(message) {
-      $.post('http://ec2-3-134-81-19.us-east-2.compute.amazonaws.com:8080/messages', message)
+      $.post('http://ezops-env.eba-p7xu9czn.us-east-2.elasticbeanstalk.com/messages', message)
     }
     
     function SearchMessagesByUser(user) {
       $("#users").empty();
-      $.get(`http://ec2-3-134-81-19.us-east-2.compute.amazonaws.com:8080/messages/${user}`, (data) => {
+      $.get(`http://ezops-env.eba-p7xu9czn.us-east-2.elasticbeanstalk.com/messages/${user}`, (data) => {
         data.forEach(filteredMessages);
       });
     }
