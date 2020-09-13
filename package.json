@@ -4,6 +4,7 @@
   "description": "Developed to show capacity to implement a CI/CD environment.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "MzSantoz",
