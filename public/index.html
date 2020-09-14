@@ -100,18 +100,18 @@
     }
 
     function getMessages() {
-      $.get('http://ezops-env.eba-p7xu9czn.us-east-2.elasticbeanstalk.com/messages', (data) => {
+      $.get('http://ezopsdocker-env.eba-prpbjmwn.us-east-2.elasticbeanstalk.com/messages', (data) => {
         data.forEach(addMessages);
       })
     }
     
     function sendMessage(message) {
-      $.post('http://ezops-env.eba-p7xu9czn.us-east-2.elasticbeanstalk.com/messages', message)
+      $.post('http://ezopsdocker-env.eba-prpbjmwn.us-east-2.elasticbeanstalk.com/messages', message)
     }
     
     function SearchMessagesByUser(user) {
       $("#users").empty();
-      $.get(`http://ezops-env.eba-p7xu9czn.us-east-2.elasticbeanstalk.com/messages/${user}`, (data) => {
+      $.get(`http://ezopsdocker-env.eba-prpbjmwn.us-east-2.elasticbeanstalk.com/messages/${user}`, (data) => {
         data.forEach(filteredMessages);
       });
     }
